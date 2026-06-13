@@ -25,20 +25,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-
-        /* Fundo padrão baseado na imagem das flores e papel */
-        .bg-floral {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('1000007701.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.15; /* Sutil para não atrapalhar a leitura */
-            z-index: -2;
+            padding: 10px;
         }
 
         /* Corações flutuantes no fundo da última página */
@@ -68,29 +55,52 @@
             100% { transform: translateY(-105vh) translateX(50px) rotate(360deg); opacity: 0; }
         }
 
-        /* Container de Páginas */
+        /* Container de Páginas com a imagem floral como background interno */
         .page {
             display: none; /* Escondido por padrão */
             width: 100%;
-            max-width: 500px;
-            min-height: 85vh;
-            padding: 40px 25px;
-            margin: 20px auto;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(212, 163, 115, 0.3);
+            max-width: 390px; /* Largura ideal para telas mobile modernas */
+            height: 85vh; /* Mantém uma altura fixa elegante na tela */
+            max-height: 700px;
+            padding: 50px 30px;
+            background-image: url('1000007701.jpg');
+            background-size: cover;
+            background-position: center;
+            border: 1px solid rgba(212, 163, 115, 0.2);
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
             text-align: center;
             flex-direction: column;
-            justify-content: center;
+            justify-content: center; /* Centraliza verticalmente o conteúdo interno */
             align-items: center;
             opacity: 0;
             transform: translateY(15px);
             transition: opacity 0.6s ease, transform 0.6s ease;
+            position: relative;
         }
 
-        /* Página Ativa ativa via JS */
+        /* Página 1 possui um tratamento diferente por usar a foto das mãos no topo */
+        #page1 {
+            background: rgba(255, 255, 255, 0.9);
+            background-image: none;
+        }
+
+        /* Elemento decorativo simulando o fundo floral sutil por trás do card 1 */
+        .page1-bg-decor {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('1000007701.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.12;
+            z-index: -1;
+            border-radius: 16px;
+        }
+
+        /* Página Ativa via JS */
         .page.active {
             display: flex;
             opacity: 1;
@@ -101,36 +111,40 @@
         h1, h2 {
             font-family: 'Cinzel', serif;
             font-weight: 400;
+            font-size: 1.5rem;
             letter-spacing: 2px;
             color: #1a1a1a;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            margin-top: 10px;
         }
 
         .serif-text {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #4a4a4a;
-            margin-bottom: 30px;
-            white-space: pre-line; /* Mantém quebras de linha dos textos */
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #3a3a3a;
+            margin-bottom: 20px;
+            white-space: pre-line;
+            max-width: 90%;
         }
 
-        /* Botões Estilo Coquette Premium */
+        /* Botões Estilo Coquette Premium Centralizados */
         .btn-next {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             background-color: #2b2b2b;
             color: #ffffff;
             border: none;
-            padding: 13px 35px;
+            padding: 12px 30px;
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-top: 15px;
+            margin-top: 10px;
+            flex-shrink: 0; /* Impede o botão de esmagar */
         }
 
         .btn-next:hover {
@@ -144,31 +158,33 @@
             transform: none;
         }
 
-        /* Elementos Customizados da Página 1 */
+        /* Imagem Hero da primeira página ajustada */
         .img-hero {
             width: 100%;
+            max-height: 40%;
+            object-fit: cover;
             border-radius: 8px;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
         /* --- MECÂNICA DA ROLETA (PÁGINA 3) --- */
         .slot-machine {
-            background: #fdfbf7;
-            border: 2px solid #d4a373;
+            background: rgba(253, 251, 247, 0.92);
+            border: 1px solid #d4a373;
             border-radius: 12px;
-            padding: 20px;
-            margin: 25px 0;
+            padding: 15px;
+            margin: 15px 0;
             width: 100%;
-            max-width: 320px;
-            box-shadow: inset 0 0 15px rgba(212,163,115,0.1);
+            box-shadow: inset 0 0 15px rgba(212,163,115,0.05);
         }
 
         .slot-title {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #8c7863;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .slots-container {
@@ -177,13 +193,13 @@
             background: #ffffff;
             border: 1px solid #e6dfd5;
             border-radius: 6px;
-            padding: 15px;
+            padding: 10px;
             overflow: hidden;
         }
 
         .slot-window {
-            width: 70px;
-            height: 70px;
+            width: 65px;
+            height: 65px;
             border: 1px solid #f0eae1;
             background: #faf9f6;
             border-radius: 4px;
@@ -202,9 +218,9 @@
         }
 
         .slot-icon {
-            width: 70px;
-            height: 70px;
-            font-size: 2.2rem;
+            width: 65px;
+            height: 65px;
+            font-size: 2rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -213,42 +229,42 @@
 
         .btn-spin {
             background-color: #d4a373;
-            margin-top: 15px;
+            margin-top: 12px;
             width: 100%;
-            max-width: 200px;
         }
 
         .slot-message {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            height: 20px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            height: 18px;
             color: #d4a373;
             font-weight: 600;
         }
 
         /* --- CONTADOR EM TEMPO REAL (PÁGINA 5) --- */
         .counter-box {
-            margin: 30px 0;
+            margin: 20px 0;
+            width: 100%;
         }
         
         .counter-sub {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: #7a7a7a;
-            margin-bottom: 10px;
+            color: #6a6a6a;
+            margin-bottom: 12px;
         }
 
         .counter-days {
             font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
+            font-size: 1.6rem;
             color: #1a1a1a;
-            font-weight: 600;
-            padding: 15px;
-            border-top: 1px solid #e6dfd5;
-            border-bottom: 1px solid #e6dfd5;
-            display: inline-block;
-            margin-bottom: 20px;
+            font-weight: 400;
+            padding: 12px 5px;
+            border-top: 1px solid rgba(212, 163, 115, 0.3);
+            border-bottom: 1px solid rgba(212, 163, 115, 0.3);
+            display: block;
+            margin-bottom: 15px;
             animation: smoothPulse 2s infinite ease-in-out;
         }
 
@@ -258,26 +274,24 @@
             100% { transform: scale(1); }
         }
 
-        /* Responsividade Básica */
-        @media(max-width: 480px) {
+        /* Otimizações finas para telas muito pequenas */
+        @media(max-height: 600px) {
             .page {
-                min-height: 90vh;
-                margin: 10px;
-                padding: 30px 20px;
+                height: 92vh;
+                padding: 25px 20px;
             }
-            h1 { font-size: 1.6rem; }
-            .serif-text { font-size: 1.05rem; }
-            .counter-days { font-size: 1.8rem; }
+            h1 { font-size: 1.3rem; margin-bottom: 8px; }
+            .serif-text { font-size: 0.95rem; margin-bottom: 12px; }
+            .img-hero { max-height: 35%; }
         }
     </style>
 </head>
 <body>
-
-    <div class="bg-floral"></div>
     
     <div id="heart-container"></div>
 
     <section id="page1" class="page active">
+        <div class="page1-bg-decor"></div>
         <img src="1000007698.jpg" alt="My Love" class="img-hero">
         
         <h1>Feliz Dia dos Namorados</h1>
@@ -300,7 +314,7 @@
 
     <section id="page3" class="page">
         <h1>Um Instante de Sorte</h1>
-        <p class="serif-text" style="font-size: 1.05rem; margin-bottom: 10px;">
+        <p class="serif-text" style="font-size: 0.95rem; margin-bottom: 5px;">
             Antes de prosseguirmos, vamos ver se o destino está totalmente alinhado ao nosso favor hoje...
         </p>
         
@@ -345,16 +359,13 @@
     <script>
         // Transição de páginas fluida
         function nextPage(pageNum) {
-            // Esconde todas as páginas tirando a classe 'active'
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
             
-            // Ativa a página desejada
             const targetPage = document.getElementById(`page${pageNum}`);
             targetPage.classList.add('active');
 
-            // Se for a página 5, inicia o contador e os corações flutuantes
             if(pageNum === 5) {
                 calculateDays();
                 startFloatingHearts();
@@ -365,7 +376,6 @@
         const icons = ['🍓', '🍒', '🍇', '🍎', '🍍', '💞'];
         const reels = [document.getElementById('reel1'), document.getElementById('reel2'), document.getElementById('reel3')];
         
-        // Monta a faixa inicial visível de símbolos nas bobinas
         reels.forEach(reel => {
             reel.innerHTML = `<div class="slot-icon">🍓</div>`;
         });
@@ -381,54 +391,45 @@
             btn.disabled = true;
             msg.innerText = "Girando...";
 
-            // Lógica de probabilidade definida no briefing: 67% ganhar (💞💞💞)
             const winProbability = Math.random() < 0.67;
             let result = [];
 
             if (winProbability) {
                 result = ['💞', '💞', '💞'];
             } else {
-                // Gera combinação aleatória (evitando que dê 💞💞💞 por acidente na derrota)
                 for(let i=0; i<3; i++) {
-                    let randomIcon = icons[Math.floor(Math.random() * (icons.length - 1))]; // Exclui o 💞 provisoriamente
+                    let randomIcon = icons[Math.floor(Math.random() * (icons.length - 1))];
                     result.push(randomIcon);
                 }
-                // Às vezes bota um coração perdido pra dar emoção
                 if(Math.random() * 10 > 5) result[Math.floor(Math.random()*3)] = '💞';
             }
 
-            // Animação visual simulando a rotação física desacelerando
             reels.forEach((reel, index) => {
-                // Cria uma "tira" vertical comprida de emojis temporários para dar o efeito de velocidade
                 let itemsHTML = '';
                 for(let i = 0; i < 15; i++) {
                     itemsHTML += `<div class="slot-icon">${icons[Math.floor(Math.random() * icons.length)]}</div>`;
                 }
-                // Adiciona o resultado final correto no término da tira
                 itemsHTML += `<div class="slot-icon">${result[index]}</div>`;
                 
                 reel.innerHTML = itemsHTML;
                 reel.style.transition = 'none';
                 reel.style.top = '0px';
                 
-                // Força o navegador a renderizar o estado inicial antes da animação rodar
                 void reel.offsetHeight; 
                 
-                // Configura o deslocamento e tempo de parada (cada bobina para um pouquinho depois da outra)
-                const travelDistance = (reel.children.length - 1) * 70;
+                const travelDistance = (reel.children.length - 1) * 65;
                 reel.style.transition = `top ${2 + index * 0.5}s cubic-bezier(0.25, 1, 0.5, 1)`;
                 reel.style.top = `-${travelDistance}px`;
             });
 
-            // Aguarda o término da última bobina para validar o resultado
             setTimeout(() => {
                 isSpinning = false;
                 btn.disabled = false;
 
                 if (result[0] === '💞' && result[1] === '💞' && result[2] === '💞') {
-                    msg.innerHTML = "Que sorte! 💞 Você ganhou meu amor inteirinho!";
-                    btn.style.display = 'none'; // Some o botão girar
-                    document.getElementById('slot-next-btn').style.display = 'inline-block'; // Libera o continuar
+                    msg.innerHTML = "Que sorte! 💞 Você ganhou meu amor!";
+                    btn.style.display = 'none';
+                    document.getElementById('slot-next-btn').style.display = 'inline-block';
                 } else {
                     msg.innerText = "Quase! Tente mais uma vez... ✨";
                 }
@@ -437,15 +438,10 @@
 
         // --- SISTEMA DO CONTADOR (PÁGINA 5) ---
         function calculateDays() {
-            // Data estipulada: 16 de Dezembro de 2025
             const startDate = new Date('2025-12-16T00:00:00');
             const today = new Date();
-            
-            // Diferença em milissegundos
             const diffTime = Math.abs(today - startDate);
-            // Conversão exata para dias inteiros passados
             const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-            
             document.getElementById('days-display').innerText = `❤️ Estamos juntos há ${diffDays} dias ❤️`;
         }
 
@@ -457,14 +453,13 @@
                 heart.classList.add('floating-heart');
                 heart.innerText = '❤️';
                 heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = (Math.random() * 3 + 4) + 's'; // Variação de velocidade
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
                 container.appendChild(heart);
 
-                // Remove o elemento após terminar a animação para não pesar o navegador
                 setTimeout(() => {
                     heart.remove();
                 }, 7000);
-            }, 400); // Cria um novo coração a cada 400ms
+            }, 400);
         }
     </script>
 </body>
